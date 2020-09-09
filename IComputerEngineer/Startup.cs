@@ -32,7 +32,11 @@ namespace IComputerEngineer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc().AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddDbContext<AppDbContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IRepository<Post>,PostRepository>();
             services.AddTransient<IFileManager, FileManager>();
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -54,9 +58,10 @@ namespace IComputerEngineer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -64,6 +69,9 @@ namespace IComputerEngineer
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseDeveloperExceptionPage();
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

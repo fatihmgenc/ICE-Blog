@@ -3,39 +3,54 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<div>
+    <form asp-action="Edit" asp-controller="Panel" method="post" enctype="multipart/form-data">
+        <input asp-for="Id" type="hidden" />
+        <div class="">
+            <label>Title</label>
+            <input asp-for="Title" class="" />
+        </div>
+        <div class="">
+            <label>Description</label>
+            <input asp-for="Description" class="" />
+        </div>
+        <div class="">
+            <label>Tags</label>
+            <input asp-for="Tags" class="" />
+        </div>
+        <div class="">
+            <label>Category</label>
+            <select asp-for="Category" class="">
+                <option value="Data">Data</option>
+                <option value="Algorithm">Algorithm</option>
+                <option value="Frameworks">Frameworks</option>
+                <option value="Programming">Programming</option>
 
-<h1>Edit</h1>
 
-<h4>Post</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="Panel" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Body" class="control-label"></label>
-                <input asp-for="Body" class="form-control" />
-                <span asp-validation-for="Body" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-
-        </form>
-    </div>
+            </select>
+        </div>
+        <div class="">
+            <label>Body</label>
+            <textarea id="editor" asp-for="Body"></textarea>
+        </div>
+        <div class="">
+            <label>Image</label>
+            <input asp-for="Image" />
+            <input asp-for="CurrentImage" type="hidden" />
+        </div>
+        <input type="submit" value="submit" class="" />
+    </form>
 </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+    $('#editor').trumbowyg();
 
+    </script>
+}

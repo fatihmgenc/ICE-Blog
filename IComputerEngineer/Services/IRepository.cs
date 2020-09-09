@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IComputerEngineer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,5 +16,6 @@ namespace IComputerEngineer.Services
         void Delete(int id);
 
         Task<bool> SaveChangesAsync();
+        List<Post> GetAll(string category);
     }
 }

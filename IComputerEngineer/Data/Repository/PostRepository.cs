@@ -24,12 +24,19 @@ namespace IComputerEngineer.Data.Repository
 
         public List<Post> GetAll()
         {
-            return  _dbContext.Posts.ToList();            
+            return _dbContext.Posts.ToList();
+        }
+
+        public List<Post> GetAll(string category)
+        {
+            Func<Post, bool> InCategry =
+                (p) => { return p.Category.ToLower().Equals(category.ToLower()); };
+            return _dbContext.Posts.Where(InCategry).ToList();
         }
 
         public Post GetById(int id)
         {
-            return _dbContext.Posts.FirstOrDefault(p=>p.Id==id);
+            return _dbContext.Posts.FirstOrDefault(p => p.Id == id);
         }
 
         public Post Insert(Post entity)

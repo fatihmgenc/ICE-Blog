@@ -36,15 +36,15 @@ namespace IComputerEngineer
             {
                 roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
             }
-            if (!ctx.Users.Any(u => u.UserName == "admin"))
+            if (!ctx.Users.Any(u => u.UserName == "fatihmg"))
             {
                 //vreateAdmin 
                 var adminUser = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = "fatihmg",
                     Email = "admin@test.com",
                 };
-                var result = userManager.CreateAsync(adminUser, "pass123").GetAwaiter().GetResult();
+                var result = userManager.CreateAsync(adminUser, "fatihmg").GetAwaiter().GetResult();
                 userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
             }
 

@@ -30,8 +30,6 @@ namespace IComputerEngineer.Controllers
             return RedirectToAction("Index", "Panel");
         }
 
-
-
         [HttpGet]
         public async Task<IActionResult> LogOut()
         {

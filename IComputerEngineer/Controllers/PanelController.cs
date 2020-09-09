@@ -45,20 +45,33 @@ namespace IComputerEngineer.Controllers
                     Body = post.Body,
                     Id = post.Id,
                     Title = post.Title,
-
+                    CurrentImage = post.Image,
+                    Category = post.Category,
+                    Tags = post.Tags,
+                    Description = post.Description,
                 });
             }
         }
         [HttpPost]
-        public async Task<IActionResult> EditAsync(PostViewModel postViewModel)
+        public async Task<IActionResult> Edit(PostViewModel postViewModel)
         {
             var post = new Post
             {
                 Title = postViewModel.Title,
                 Id = postViewModel.Id,
                 Body = postViewModel.Body,
-                Image =await _fileManager.SaveImage(postViewModel.Image),
-            }; 
+                Description = postViewModel.Description,
+                Tags = postViewModel.Tags,
+                Category = postViewModel.Category,
+            };
+            if (postViewModel.Image==null)
+            {
+                post.Image = postViewModel.CurrentImage;
+            }
+            else
+            {
+                post.Image = await _fileManager.SaveImage(postViewModel.Image);
+            }
             if (post.Id > 0)
             {
                 _postRepo.Update(post);
@@ -67,7 +80,7 @@ namespace IComputerEngineer.Controllers
             {
                 _postRepo.Insert(post);
             }
-            if (_postRepo.SaveChangesAsync().Result)
+            if (await _postRepo.SaveChangesAsync())
             {
                 return RedirectToAction("Index");
             }
@@ -77,10 +90,10 @@ namespace IComputerEngineer.Controllers
             }
 
         }
-        public IActionResult Remove(int id)
+        public async Task<IActionResult> Remove(int id)
         {
             _postRepo.Delete(id);
-            _postRepo.SaveChangesAsync();
+            await _postRepo.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

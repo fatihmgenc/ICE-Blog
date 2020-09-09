@@ -1,18 +1,27 @@
-﻿@model  IEnumerable<Post>
+﻿@model IEnumerable<Post>
 @{
-   ViewData["Title"] = "Admin Panel";
- }
+    ViewBag.Title = "IComputerEngineer Blog";
+    ViewBag.Descrition = "Blog:IComputerEngineer<THuman>";
+    ViewBag.Tags = "blog programming coding computer computer science";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var basePath =Context.Request.PathBase;
 
-<h2>Home Page</h2>
-<div >
-    <ul>
-        @foreach (var post in Model)
-        {
-        <li>
-            <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
-                @post.Title;
-            </a>
-        </li>
-        }
-    </ul>
+}
+
+<div class="main-img">
+    <span class="title-main">IComputerEngineer</span>
+</div>
+<div class="container">
+    @foreach (var post in Model)
+    {
+        //sonradan anasayfada çalışmazsa 14. bölüm sonuna bak
+        <a class="post" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+            <img class="post-img" src="@Url.Action("Image", "Home", new { image = post.Image})" />
+            <span class="title">
+                @post.Title
+            </span>
+        </a>
+
+
+    }
 </div>

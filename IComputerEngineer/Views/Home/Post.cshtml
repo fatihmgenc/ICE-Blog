@@ -1,12 +1,26 @@
 ﻿@model Post
 @{
-    ViewData["Title"] = "Post";
+    ViewBag.Title = "IComputerEngineer Blog";
+    ViewBag.Category = Model.Category;
+    ViewBag.Description = Model.Description;
+    ViewBag.Tags = Model.Tags.Replace(' ',',')+" "+Model.Category;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="post no-shadow">
+        @if (!String.IsNullOrEmpty(Model.Image))
+        {
+            <img class="post-img" src="@Url.Action("Image", "Home",new { image = Model.Image})" />
+            <span class="title">@Model.Title</span>
+        }
+    </div>
+        <div class="post-body">
+            @Html.Raw(@Model.Body)
+        </div>
+</div>
 
-<h1>@Model.Title</h1>
-<p>
-    @Model.Body
-</p>
+
+
+
 
 
