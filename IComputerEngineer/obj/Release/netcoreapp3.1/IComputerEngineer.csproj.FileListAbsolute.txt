@@ -429,3 +429,4 @@ C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netc
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netcoreapp3.1\IComputerEngineer.pdb
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netcoreapp3.1\IComputerEngineer.genruntimeconfig.cache
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\appsettings.production.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\PhotoSauce.MagicScaler.dll

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IComputerEngineer.Models.Comments;
+using System;
 using System.Collections.Generic;
 
 namespace IComputerEngineer.Models
@@ -14,6 +15,6 @@ namespace IComputerEngineer.Models
         public string Description { get; set; } = "";   
         public string Tags { get; set; } = "";
         public string Category { get; set; } = "";
-
+        public List<MainComment> MainComments { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using IComputerEngineer.Data.FileManager;
+using IComputerEngineer.Data.Repository.Abstract;
 using IComputerEngineer.Models;
 using IComputerEngineer.Services;
 using IComputerEngineer.ViewModels;
@@ -15,10 +16,10 @@ namespace IComputerEngineer.Controllers
     [Authorize(Roles ="Admin")]
     public class PanelController : Controller
     {
-        private IRepository<Post> _postRepo;
+        private IPostRepository _postRepo;
         private IFileManager _fileManager;
 
-        public PanelController(IRepository<Post> repository, IFileManager fileManager)
+        public PanelController(IPostRepository repository, IFileManager fileManager)
         {
             _postRepo = repository;
             this._fileManager = fileManager;
@@ -64,12 +65,14 @@ namespace IComputerEngineer.Controllers
                 Tags = postViewModel.Tags,
                 Category = postViewModel.Category,
             };
-            if (postViewModel.Image==null)
+            if (postViewModel.Image == null)
             {
                 post.Image = postViewModel.CurrentImage;
             }
             else
             {
+                if (!string.IsNullOrEmpty(postViewModel.CurrentImage))
+                    _fileManager.RemoveImage(postViewModel.CurrentImage);
                 post.Image = await _fileManager.SaveImage(postViewModel.Image);
             }
             if (post.Id > 0)

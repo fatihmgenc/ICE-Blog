@@ -3,20 +3,52 @@
     ViewBag.Title = "IComputerEngineer Blog";
     ViewBag.Category = Model.Category;
     ViewBag.Description = Model.Description;
-    ViewBag.Tags = Model.Tags.Replace(' ',',')+" "+Model.Category;
+    ViewBag.Tags = Model.Tags.Replace(' ', ',') + " " + Model.Category;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
     <div class="post no-shadow">
         @if (!String.IsNullOrEmpty(Model.Image))
         {
-            <img class="post-img" src="@Url.Action("Image", "Home",new { image = Model.Image})" />
+            <img class="post-img" src="@Url.Action("Image", "Home", new { image = Model.Image })" />
             <span class="title">@Model.Title</span>
         }
     </div>
-        <div class="post-body">
-            @Html.Raw(@Model.Body)
-        </div>
+    <div class="post-body">
+        @Html.Raw(@Model.Body)
+    </div>
+    <div class="comment-section">
+        @{ await Html.RenderPartialAsync("_MainComment", new CommentViewModel
+            {
+                PostId = Model.Id,
+                MainCommentId = 0
+            });
+        }
+        @foreach (var c in Model.MainComments)
+        {
+            <p>
+                @c.Messege ---- @c.Created
+            </p>
+            <div style="margin-left:20px;">
+                <h4>Sub Comments</h4>
+                @{
+                    await Html.RenderPartialAsync("_MainComment", new CommentViewModel
+                    {
+                        PostId = Model.Id,
+                        MainCommentId = c.Id,
+                    });
+                }
+                @foreach (var sc in c.SubComments)
+                {
+                    <p>
+                        @sc.Messege ---- @sc.Created     
+                    </p>
+
+                }
+            </div>
+        }
+
+    </div>
 </div>
 
 

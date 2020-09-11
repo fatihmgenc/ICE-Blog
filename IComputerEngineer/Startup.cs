@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using IComputerEngineer.Data.FileManager;
 using IComputerEngineer.Data.Repository;
+using IComputerEngineer.Data.Repository.Abstract;
 using IComputerEngineer.Models;
 using IComputerEngineer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +39,8 @@ namespace IComputerEngineer
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<AppDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IRepository<Post>,PostRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ISubCommentRepository, SubCommentRepository>();
             services.AddTransient<IFileManager, FileManager>();
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -52,6 +55,9 @@ namespace IComputerEngineer
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Auth/Login";
+            });
+            services.AddMvc(options =>{
+                options.CacheProfiles.Add("Monthly", new CacheProfile { Duration = 60 * 60 * 60 * 20 * 7 });
             });
         }
 
@@ -74,7 +80,6 @@ namespace IComputerEngineer
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

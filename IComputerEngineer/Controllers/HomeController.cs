@@ -9,23 +9,41 @@ using IComputerEngineer.Models;
 using IComputerEngineer.Data;
 using IComputerEngineer.Services;
 using IComputerEngineer.Data.FileManager;
+using IComputerEngineer.Models.Comments;
+using IComputerEngineer.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using IComputerEngineer.Data.Repository.Abstract;
 
 namespace IComputerEngineer.Controllers
 {
     public class HomeController : Controller
     {
         private IFileManager _fileManager;
-        private IRepository<Post> _postRepo;
+        private IPostRepository _postRepo;
+        private ISubCommentRepository _subCRepo;
 
-        public HomeController(IRepository<Post> repository, IFileManager fileManager)
+        public HomeController(IPostRepository postRepository, ISubCommentRepository subCommentRepository, IFileManager fileManager)
         {
             _fileManager = fileManager;
-            _postRepo = repository;
+            _postRepo = postRepository;
+            _subCRepo = subCommentRepository;
+            var comment = new MainComment();
         }
-        public IActionResult Index(string category)
+        public IActionResult Index(int pageNumber, string category)
         {
-            var posts = String.IsNullOrEmpty(category) ? _postRepo.GetAll() : _postRepo.GetAll(category);
-            return View(posts);
+            if (pageNumber < 1)
+                return RedirectToAction("Index", new { pageNumber = 1, category });
+            if (String.IsNullOrEmpty(category))
+            {
+                var viewModel = _postRepo.GetAll(pageNumber);
+                return View(viewModel);
+            }
+            else
+            {
+                var viewModel = _postRepo.GetAll(pageNumber,category);
+                return View(viewModel);
+            }
+
         }
         public IActionResult Post(int id)
         {
@@ -33,12 +51,46 @@ namespace IComputerEngineer.Controllers
             return View(post);
         }
         [HttpGet("[Controller]/Image/(image)")]
+        [ResponseCache(CacheProfileName = "Monthly")]
         public IActionResult Image(string image)
         {
             var mime = image.Substring(image.LastIndexOf(".") + 1);
 
             return new FileStreamResult(_fileManager.ImageStream(image), $"image/{mime}");
         }
+
+        public async Task<IActionResult> Comment(CommentViewModel commentVM)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Post", new { id = commentVM.PostId });
+            var post = _postRepo.GetById(commentVM.PostId);
+            if (commentVM.MainCommentId == 0)
+            {
+                post.MainComments = post.MainComments ?? new List<MainComment>();
+                post.MainComments.Add(new MainComment
+                {
+                    Created = DateTime.Now,
+                    Messege = commentVM.Messege,
+                });
+                _postRepo.Update(post);
+                await _postRepo.SaveChangesAsync();
+            }
+            else
+            {
+                var comment = new SubComment
+                {
+                    Created = DateTime.Now,
+                    Messege = commentVM.Messege,
+                    MainCommentId = commentVM.MainCommentId,
+                };
+                _subCRepo.Insert(comment);
+                await _subCRepo.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+
+
+
 
         public IActionResult Privacy()
         {

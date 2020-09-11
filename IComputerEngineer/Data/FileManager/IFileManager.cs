@@ -12,5 +12,6 @@ namespace IComputerEngineer.Data.FileManager
     {
         FileStream ImageStream(string image);
         Task<string> SaveImage(IFormFile images);
+        bool RemoveImage(string image);
     }
 }

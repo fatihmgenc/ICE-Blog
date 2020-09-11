@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Post>
+﻿@model IndexViewModel
 @{
     ViewBag.Title = "IComputerEngineer Blog";
     ViewBag.Descrition = "Blog:IComputerEngineer<THuman>";
     ViewBag.Tags = "blog programming coding computer computer science";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var basePath =Context.Request.PathBase;
+    var basePath = Context.Request.PathBase;
 
 }
 
@@ -12,16 +12,25 @@
     <span class="title-main">IComputerEngineer</span>
 </div>
 <div class="container">
-    @foreach (var post in Model)
+    @foreach (var post in Model.Posts)
     {
         //sonradan anasayfada çalışmazsa 14. bölüm sonuna bak
         <a class="post" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
-            <img class="post-img" src="@Url.Action("Image", "Home", new { image = post.Image})" />
+            <img class="post-img" src="@Url.Action("Image", "Home", new { image = post.Image })" />
             <span class="title">
                 @post.Title
             </span>
         </a>
-
-
     }
+        <div>
+            @if (Model.CurrenPageNumber > 1)
+            {
+                <a  asp-action="Index" asp-controller="home"  asp-route-pageNumber="@(Model.CurrenPageNumber-1)">Previus Page</a>
+            }
+            @if (Model.NextPage)
+            {
+                <a asp-action="Index" asp-controller="home" asp-route-pageNumber="@(Model.CurrenPageNumber+1)">Next Page</a>
+            }
+        </div>
+
 </div>
