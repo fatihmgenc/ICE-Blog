@@ -8,6 +8,7 @@ namespace IComputerEngineer.Models.Comments
 {
     public class Comment
     {
+        public string Author { get; set; }
         public int Id { get; set; }
         public string  Messege { get; set; }
         public DateTime Created { get; set; }

@@ -10,6 +10,7 @@ namespace IComputerEngineer.ViewModels
     {
         public IEnumerable<Post> Posts{ get; set; }
         public bool NextPage{ get; set; }
+        public int PageCount { get; set; }
         public int CurrenPageNumber { get; set; }
         public string Category { get;  set; }
     }

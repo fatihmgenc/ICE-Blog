@@ -17,20 +17,25 @@
         //sonradan anasayfada çalışmazsa 14. bölüm sonuna bak
         <a class="post" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
             <img class="post-img" src="@Url.Action("Image", "Home", new { image = post.Image })" />
-            <span class="title">
-                @post.Title
-            </span>
         </a>
-    }
-        <div>
-            @if (Model.CurrenPageNumber > 1)
-            {
-                <a  asp-action="Index" asp-controller="home"  asp-route-pageNumber="@(Model.CurrenPageNumber-1)">Previus Page</a>
-            }
-            @if (Model.NextPage)
-            {
-                <a asp-action="Index" asp-controller="home" asp-route-pageNumber="@(Model.CurrenPageNumber+1)">Next Page</a>
-            }
+        <div class="title">
+            <p>@post.Title</p>
         </div>
+    }
+    <div class="pages">
+        @if (Model.CurrenPageNumber > 1)
+        {
+            <a asp-action="Index" asp-controller="home" asp-route-pageNumber="@(Model.CurrenPageNumber-1)">(--</a>
+        }
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <a asp-action="Index" asp-controller="home" class="@(i == Model.CurrenPageNumber ? "active" : "")"
+               asp-route-pageNumber="@i">@i</a>
+        }
+        @if (Model.NextPage)
+        {
+            <a asp-action="Index" asp-controller="home" asp-route-pageNumber="@(Model.CurrenPageNumber+1)">--)</a>
+        }
+    </div>
 
 </div>

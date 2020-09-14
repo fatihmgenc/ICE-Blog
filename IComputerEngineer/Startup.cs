@@ -1,19 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using IComputerEngineer.Data.FileManager;
 using IComputerEngineer.Data.Repository;
 using IComputerEngineer.Data.Repository.Abstract;
-using IComputerEngineer.Models;
-using IComputerEngineer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,7 +47,8 @@ namespace IComputerEngineer
             {
                 options.LoginPath = "/Auth/Login";
             });
-            services.AddMvc(options =>{
+            services.AddMvc(options =>
+            {
                 options.CacheProfiles.Add("Monthly", new CacheProfile { Duration = 60 * 60 * 60 * 20 * 7 });
             });
         }

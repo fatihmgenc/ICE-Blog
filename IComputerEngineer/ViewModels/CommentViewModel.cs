@@ -15,5 +15,7 @@ namespace IComputerEngineer.ViewModels
         public int MainCommentId { get; set; }
         [Required]
         public string Messege { get; set; }
+        [Required]
+        public string Author { get; set; }
     }
 }

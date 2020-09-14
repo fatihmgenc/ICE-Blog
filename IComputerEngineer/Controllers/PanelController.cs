@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using IComputerEngineer.Data.FileManager;
+﻿using IComputerEngineer.Data.FileManager;
 using IComputerEngineer.Data.Repository.Abstract;
 using IComputerEngineer.Models;
-using IComputerEngineer.Services;
 using IComputerEngineer.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace IComputerEngineer.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class PanelController : Controller
     {
         private IPostRepository _postRepo;

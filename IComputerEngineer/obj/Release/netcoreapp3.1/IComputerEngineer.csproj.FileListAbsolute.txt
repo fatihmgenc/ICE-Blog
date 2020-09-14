@@ -430,3 +430,10 @@ C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netc
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netcoreapp3.1\IComputerEngineer.genruntimeconfig.cache
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\appsettings.production.json
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\PhotoSauce.MagicScaler.dll
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\bundleconfig.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netcoreapp3.1\Razor\Views\Home\_MainComment.cshtml.g.cs
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Release\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\Properties\serviceDependencies.IComputerEngineer - Web Deploy.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\IComputerEngineer - Web Deploy\mssql1.arm.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\IComputerEngineer - Web Deploy\profile.arm.json

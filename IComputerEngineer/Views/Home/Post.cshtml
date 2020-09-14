@@ -6,14 +6,18 @@
     ViewBag.Tags = Model.Tags.Replace(' ', ',') + " " + Model.Category;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container">
-    <div class="post no-shadow">
+    <div class="title">
+        <p>@Model.Title</p>
+    </div>
+    <div class="post">
         @if (!String.IsNullOrEmpty(Model.Image))
         {
             <img class="post-img" src="@Url.Action("Image", "Home", new { image = Model.Image })" />
-            <span class="title">@Model.Title</span>
         }
     </div>
+
     <div class="post-body">
         @Html.Raw(@Model.Body)
     </div>
@@ -26,11 +30,13 @@
         }
         @foreach (var c in Model.MainComments)
         {
-            <p>
-                @c.Messege ---- @c.Created
+            <div class="mainComment">
+            <p >
+                @c.Messege -- @c.Created -- @c.Author
             </p>
+            </div>
             <div style="margin-left:20px;">
-                <h4>Sub Comments</h4>
+                <h5>Sub Comments</h5>
                 @{
                     await Html.RenderPartialAsync("_MainComment", new CommentViewModel
                     {
@@ -40,9 +46,11 @@
                 }
                 @foreach (var sc in c.SubComments)
                 {
+                    <div class="subComment">
                     <p>
-                        @sc.Messege ---- @sc.Created     
+                        @sc.Messege -- @sc.Created -- @sc.Author
                     </p>
+                    </div>
 
                 }
             </div>

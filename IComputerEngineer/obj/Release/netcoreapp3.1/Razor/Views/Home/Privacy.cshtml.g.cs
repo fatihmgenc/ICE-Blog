@@ -28,13 +28,20 @@ using IComputerEngineer.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\Views\_ViewImports.cshtml"
+using IComputerEngineer.Models.Comments;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\Views\_ViewImports.cshtml"
 using IComputerEngineer.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d8ddb6bffa5a9b264bf8f89038bf03c234083fd3", @"/Views/Home/Privacy.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8c4560c33ec57cb9ec7142db186854b8cf930097", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"108b00fef8b40ad84d4043064262165febcf1904", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Privacy : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -1,11 +1,9 @@
 ﻿using IComputerEngineer.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace IComputerEngineer.Services
+namespace IComputerEngineer.Data.Repository.Abstract
 {
     public interface IRepository<TEntity>
     {

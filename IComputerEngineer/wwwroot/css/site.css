@@ -1,12 +1,28 @@
 ﻿body {
     margin: 0;
-    background-color: #aa8b8b;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #987f7f;
 }
 
 a {
     color: white;
     text-decoration: none;
 }
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .button:hover {
+        background-color: #555;
+    }
 
     a:hover {
         text-decoration: underline;
@@ -33,53 +49,197 @@ nav {
 }
 
 .title {
-    position: absolute;
-    color: black;
-    font-size: 40px;
+    background-color: rgba(0,0,0, 0.5);
+    color: white;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    text-align: center;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    top: 35%;
+    padding: 5px;
+    margin: 5px;
 }
 
 .title-main {
-    background-color: black;
-    position: absolute;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.95); /* Black w/opacity/see-through */
+    border: 3px solid #f1f1f1;
     color: white;
-    font-size: 44px;
+    font-size: 33px;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    top: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px;
+    width:auto;
+    text-align: center;
 }
-
-.container {
+    .container {
     max-width: 800px;
     width: 100%;
     margin: auto;
 }
 
+
 .post {
-    margin: 5px;
+    margin: 10px 10px 10px 10px;
     position: relative;
     display: flex;
     height: 400px;
-    width:100%;
-    box-shadow: 0 0 5px 0 black;
+    width:auto;
+    box-shadow: 0 0 8px 0 black;
+}
+.post:hover {
+    opacity:0.3;
 }
 
     .post-img {
     width: 100%;
-    object-fit: cover;
 }
 
-    .post-body {
+.post-body {
     padding: 20px 5px;
-    margin: -5px 5px 0;
+    margin: -5px 5px 5px;
     object-fit: cover;
-    background-color: white;
+    background-color: #e8e396;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2rem;
+}
 
-.no-shadow {
-    box-shadow: none;
+    .pages a {
+        background-color: grey;
+        color: white;
+        padding: 1rem;
+        border: 1px solid #eee;
+    }
+    .pages a.active{
+        background-color:darkslategrey;
+        
+    }
+    .pages a:hover{
+        background-color: #999;
+        text-decoration:none;
+    }
+.userName {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+}
+    .userName input {
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 0 2px 0;
+        font-size: medium;
+    }
+.password {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+    .password input {
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 0 2px 0;
+        font-size: medium;
+    }
+
+.signInSubmit {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+    .signInSubmit input {
+        border-radius:10px;
+        box-shadow: 0 2px 0;
+        font-size:large;
+    }
+
+.mainComment p {
+    background-color: bisque;
+}
+.subComment p{
+    background-color: #e0e0e0;
+}
+.comment input {
+    height:50px;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.column {
+    max-width: 430px;
+    max-height:460px;
+    margin-bottom: 16px;
+    display: block;
+    margin:auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    background-color:#fce7e7;
+
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.container-about {
+    padding: 0 16px;
+}
+
+    .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+.title-about {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .button:hover {
+        background-color: #555;
+    }
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
 }

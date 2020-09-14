@@ -1,6 +1,5 @@
 ﻿using IComputerEngineer.Data.Repository.Abstract;
 using IComputerEngineer.Models;
-using IComputerEngineer.Services;
 using IComputerEngineer.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,7 +16,7 @@ namespace IComputerEngineer.Data.Repository
 
         public PostRepository(AppDbContext dbContext)
         {
-            _dbContext = dbContext; 
+            _dbContext = dbContext;
         }
 
         public void Delete(int id)
@@ -39,15 +38,16 @@ namespace IComputerEngineer.Data.Repository
             int skipAmount = pageSize * (pageNumber - 1);
             return new IndexViewModel
             {
-                CurrenPageNumber = pageNumber,
-                NextPage = (postCount-pageNumber*pageSize)>0,
+                PageCount = postCount % pageSize == 0 ? postCount / pageSize : (postCount / pageSize) + 1,
+            CurrenPageNumber = pageNumber,
+                NextPage = (postCount - pageNumber * pageSize) > 0,
                 Posts = _dbContext.Posts
             .Skip(skipAmount)
             .Take(pageSize)
             .ToList()
             };
         }
-        public IndexViewModel GetAll(int pageNumber,string category)
+        public IndexViewModel GetAll(int pageNumber, string category)
         {
             Func<Post, bool> InCategry = (p) => { return p.Category.ToLower().Equals(category.ToLower()); };
             int pageSize = 5;
@@ -55,6 +55,7 @@ namespace IComputerEngineer.Data.Repository
             int postCount = _dbContext.Posts.Count(InCategry);
             return new IndexViewModel
             {
+                PageCount = postCount % pageSize == 0 ? postCount / pageSize : (postCount / pageSize) + 1,
                 Category = category,
                 CurrenPageNumber = pageNumber,
                 NextPage = (postCount - pageNumber * pageSize) > 0,

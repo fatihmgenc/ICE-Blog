@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using IComputerEngineer.Data.FileManager;
+using IComputerEngineer.Data.Repository.Abstract;
 using IComputerEngineer.Models;
-using IComputerEngineer.Data;
-using IComputerEngineer.Services;
-using IComputerEngineer.Data.FileManager;
 using IComputerEngineer.Models.Comments;
 using IComputerEngineer.ViewModels;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using IComputerEngineer.Data.Repository.Abstract;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace IComputerEngineer.Controllers
 {
@@ -29,6 +24,10 @@ namespace IComputerEngineer.Controllers
             _subCRepo = subCommentRepository;
             var comment = new MainComment();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
         public IActionResult Index(int pageNumber, string category)
         {
             if (pageNumber < 1)
@@ -40,7 +39,7 @@ namespace IComputerEngineer.Controllers
             }
             else
             {
-                var viewModel = _postRepo.GetAll(pageNumber,category);
+                var viewModel = _postRepo.GetAll(pageNumber, category);
                 return View(viewModel);
             }
 
@@ -69,6 +68,7 @@ namespace IComputerEngineer.Controllers
                 post.MainComments = post.MainComments ?? new List<MainComment>();
                 post.MainComments.Add(new MainComment
                 {
+                    Author = commentVM.Author,
                     Created = DateTime.Now,
                     Messege = commentVM.Messege,
                 });
@@ -79,6 +79,7 @@ namespace IComputerEngineer.Controllers
             {
                 var comment = new SubComment
                 {
+                    Author=commentVM.Author,
                     Created = DateTime.Now,
                     Messege = commentVM.Messege,
                     MainCommentId = commentVM.MainCommentId,
@@ -86,7 +87,7 @@ namespace IComputerEngineer.Controllers
                 _subCRepo.Insert(comment);
                 await _subCRepo.SaveChangesAsync();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Post", new { id = commentVM.PostId });
         }
 
 

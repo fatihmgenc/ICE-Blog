@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Threading.Tasks;
-using IComputerEngineer.Data;
 using IComputerEngineer.Data.Repository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
 
 namespace IComputerEngineer
 {
@@ -24,29 +18,29 @@ namespace IComputerEngineer
             {
 
 
-            var scope = host.Services.CreateScope();
-            var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            ctx.Database.EnsureCreated();
+                var scope = host.Services.CreateScope();
+                var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                ctx.Database.EnsureCreated();
 
 
-            var adminRole = new IdentityRole("Admin");
-            if (!ctx.Roles.Any())
-            {
-                roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
-            }
-            if (!ctx.Users.Any(u => u.UserName == "fatihmg"))
-            {
-                //vreateAdmin 
-                var adminUser = new IdentityUser
+                var adminRole = new IdentityRole("Admin");
+                if (!ctx.Roles.Any())
                 {
-                    UserName = "fatihmg",
-                    Email = "admin@test.com",
-                };
-                var result = userManager.CreateAsync(adminUser, "fatihmg").GetAwaiter().GetResult();
-                userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
-            }
+                    roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
+                }
+                if (!ctx.Users.Any(u => u.UserName == "fatihmg"))
+                {
+                    //vreateAdmin 
+                    var adminUser = new IdentityUser
+                    {
+                        UserName = "fatihmg",
+                        Email = "admin@test.com",
+                    };
+                    var result = userManager.CreateAsync(adminUser, "fatihmg").GetAwaiter().GetResult();
+                    userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
+                }
 
             }
             catch (Exception e)

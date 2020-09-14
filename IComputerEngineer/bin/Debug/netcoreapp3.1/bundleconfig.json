@@ -12,6 +12,4 @@
       "renameLocals": true// var options ==> {} var o = ()  
     }
   }
-
-
 ]

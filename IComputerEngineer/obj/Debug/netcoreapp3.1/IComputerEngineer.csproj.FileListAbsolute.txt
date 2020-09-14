@@ -432,3 +432,8 @@ C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Debug\netcor
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Debug\netcoreapp3.1\IComputerEngineer.csprojAssemblyReference.cache
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Debug\netcoreapp3.1\bundleconfig.json
 C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Debug\netcoreapp3.1\Razor\Views\Home\_MainComment.cshtml.g.cs
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.IComputerEngineer - Web Deploy.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\IComputerEngineer - Web Deploy\mssql1.arm.json
+C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\IComputerEngineer - Web Deploy\profile.arm.json

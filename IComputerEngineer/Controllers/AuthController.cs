@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IComputerEngineer.ViewModels;
+﻿using IComputerEngineer.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace IComputerEngineer.Controllers
 {
@@ -14,7 +11,7 @@ namespace IComputerEngineer.Controllers
 
         public AuthController(SignInManager<IdentityUser> signInManager)
         {
-            _signInManager = signInManager; 
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -26,8 +23,12 @@ namespace IComputerEngineer.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
-            return RedirectToAction("Index", "Panel");
+            if (!string.IsNullOrEmpty(loginViewModel.UserName) && !string.IsNullOrEmpty(loginViewModel.Password))
+            {
+                await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
+                return RedirectToAction("Index", "Panel");
+            }
+            return RedirectToAction("Login");
         }
 
         [HttpGet]

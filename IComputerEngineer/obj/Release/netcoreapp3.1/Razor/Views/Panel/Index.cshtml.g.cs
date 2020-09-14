@@ -28,13 +28,20 @@ using IComputerEngineer.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\Views\_ViewImports.cshtml"
+using IComputerEngineer.Models.Comments;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\Views\_ViewImports.cshtml"
 using IComputerEngineer.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d9f23d20d2ce57db94ffd5eb797c3ffb4209daa6", @"/Views/Panel/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8c4560c33ec57cb9ec7142db186854b8cf930097", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"108b00fef8b40ad84d4043064262165febcf1904", @"/Views/_ViewImports.cshtml")]
     public class Views_Panel_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Post>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Panel", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,7 +82,7 @@ using IComputerEngineer.ViewModels;
 #line default
 #line hidden
 #nullable disable
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa65058", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa65270", async() => {
                 WriteLiteral("Create New Post");
             }
             );
@@ -102,7 +109,7 @@ using IComputerEngineer.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("            <li>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa66739", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa66951", async() => {
                 WriteLiteral("\r\n                    ");
 #nullable restore
 #line 14 "C:\Users\Fatih\source\repos\IComputerEngineer\IComputerEngineer\Views\Panel\Index.cshtml"
@@ -143,7 +150,7 @@ using IComputerEngineer.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa69420", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa69632", async() => {
                 WriteLiteral("\r\n                    Edit\r\n                ");
             }
             );
@@ -176,7 +183,7 @@ using IComputerEngineer.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa611865", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9f23d20d2ce57db94ffd5eb797c3ffb4209daa612077", async() => {
                 WriteLiteral("\r\n                    Remove\r\n                ");
             }
             );

@@ -26,6 +26,9 @@ namespace IComputerEngineer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -49,10 +52,13 @@ namespace IComputerEngineer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("MainCommentId")
+                    b.Property<int>("MainCommentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Messege")
@@ -305,7 +311,9 @@ namespace IComputerEngineer.Migrations
                 {
                     b.HasOne("IComputerEngineer.Models.Comments.MainComment", null)
                         .WithMany("SubComments")
-                        .HasForeignKey("MainCommentId");
+                        .HasForeignKey("MainCommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
