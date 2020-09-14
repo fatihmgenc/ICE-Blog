@@ -1,5 +1,6 @@
 ﻿body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #987f7f;
 }
 
@@ -7,6 +8,21 @@ a {
     color: white;
     text-decoration: none;
 }
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .button:hover {
+        background-color: #555;
+    }
 
     a:hover {
         text-decoration: underline;
@@ -64,6 +80,7 @@ nav {
     width: 100%;
     margin: auto;
 }
+
 
 .post {
     margin: 10px 10px 10px 10px;
@@ -157,4 +174,72 @@ nav {
 }
 .comment input {
     height:50px;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.column {
+    max-width: 430px;
+    max-height:460px;
+    margin-bottom: 16px;
+    display: block;
+    margin:auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    background-color:#fce7e7;
+
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.container-about {
+    padding: 0 16px;
+}
+
+    .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+.title-about {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .button:hover {
+        background-color: #555;
+    }
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
 }
